@@ -1,21 +1,24 @@
+/* Standard Format */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #222;
-    color: white;
+    background-color: #fff;
+    color: #333;
 }
 
 h1, h2 {
-    color: #9966CC;
+    color: #a372ff;
 }
 
 .navbar {
-    background-color: #111;
+    background-color: #D8BFD8;
     padding: 10px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
@@ -36,14 +39,16 @@ h1, h2 {
 
 .navbar ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #333;
     font-size: 18px;
     padding: 8px 16px;
-    transition: color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li a:hover, .navbar ul li a.active {
-    color: #9966CC;
+    background-color: #BA55D3;
+    color: #fff;
+    border-radius: 4px;
 }
 
 .main-content {
@@ -55,18 +60,19 @@ h1, h2 {
 .section {
     padding: 80px 20px;
     margin: 50px 0;
-    background-color: #333;
+    background-color: #f9f9f9;
     text-align: center;
 }
 
 .section h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #6A5ACD;
 }
 
 .section p {
     font-size: 1.2rem;
-    color: #ddd;
+    color: #555;
 }
 
 html {
@@ -74,10 +80,55 @@ html {
 }
 
 .fade-in {
-    opacity: 0;               
-    transition: opacity 2s;   
+    opacity: 0;
+    transition: opacity 2s;
 }
 
 .fade-in.visible {
-    opacity: 1;               
+    opacity: 1;
+}
+
+/* Dark Mode */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.navbar {
+    background-color: #D8BFD8; 
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul li a {
+    color: #333; 
+}
+
+.navbar ul li a:hover, .navbar ul li a.active {
+    background-color: #BA55D3;
+    color: #fff;
+}
+
+
+body.dark-theme {
+    background-color: #222; 
+    color: white;
+}
+
+body.dark-theme .navbar {
+    background-color: #111; 
+    color: white;
+    box-shadow: none;
+}
+
+body.dark-theme .navbar ul li a {
+    color: #fff;
+}
+
+body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
+    background-color: #9966CC;
+    color: #fff;
 }
