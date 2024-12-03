@@ -4,42 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - MarcelBossASG</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+
+        .navbar {
+            background-color: #D8BFD8;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .navbar ul li:last-child {
+            margin-right: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar ul li a:hover, .navbar ul li a.active {
+            background-color: #9966CC;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .main-content {
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .project-box {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 2px solid #BA55D3;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-box img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .project-box h3 {
+            font-size: 24px;
+            color: #6A5ACD;
+            margin-bottom: 15px;
+        }
+
+        .project-box p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .project-box a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #6A5ACD;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-box a:hover {
+            background-color: #5B4EAB;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="home page.html">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="projects.html" class="active">Projects</a></li>
             <li><a href="socials.html">Socials</a></li>
-            <li><a href="marcel corporations.html">Marcel Corporations</a></li>
+            <li><a href="marcel-corporations.html">Marcel Corporations</a></li>
         </ul>
     </nav>
 
-    <div class="main-content fade-in">
-        <h2>Marcel Corporations</h2>
-        <h1 class="spaced-paragraph">Welcome to the Projects page</h1>
-        <style>
-            .spaced-paragraph {
-                margin-bottom: 40px;
-            }
-        </style>
-        <p><u>so far i made afew funny you could say "Projects"</u></p>
-        <p>this include this website right now</p>
-        <p>and also things such as my Fake Company "Marcel Corporations" that i made up around 2023</p>
-        <p class="spaced-paragraph">it started off being named Marcel Airlines before it was named to what it is now</p>
-        <p class="spaced-paragraph">another project would be Nuclear Testing and Research, this is just a random "company" i made in a minecraft server...</p>
-        <p>we also have a empire / country where the followers are called "ASGians"</p>
-        <p>we existed before the big bang and MarcelBossASG is their Lord</p>
-        <p class="spaced-paragraph" style="color: #FF0000;"><u>Dont ask me how i come up with this stuff because i dont even know...</u></color></p>
-        <h4>Some future projects <h5><b>Maybe.</b></h5></h4>
-        <p>Hosting an osu tournament.</p>
-        <p>Actully learning coding?</p>
-        <p>Learning Japanese.</p>
-        <h4>Long Term Goals</h4>
-        <p>Finishing highschool.</p>
-        <p>Moving to <b>[plan B] Canada.</b> or <b>[Plan A] Japan.</b></p>
+    <div class="main-content">
+        <div class="project-box">
+            <img src="Images/Logo.png" alt="Project Image">
+            <h3>Marcel Corporations</h3>
+            <p>A made up company run by MarcelBossASG.</p>
+            <a href="marcel-corporations.html" target="_self">Visit Project</a>
+        </div>
+        <div class="project-box">
+            <img src="Images/Logo_Old.jpeg" alt="Project Image">
+            <h3>Marcel Airways</h3>
+            <p>A standalone company before Marcel Corporations was ever a thing.</p>
+            <a href="marcel-airways.html" target="_self">Visit Project</a>
+        </div>
+        <div class="project-box">
+            <img src="Images/NuclearTesting.png" alt="Project Image">
+            <h3>Nuclear Testing And Research</h3>
+            <p>A nuclear testing facility made on a community minecraft server called Puff Craft</p>
+            <a href="nuclear-testing.html" target="_self">Visit Project</a>
+        </div>
+        <div class="project-box">
+            <img src="Images/Asgian.jpg" alt="Project Image">
+            <h3>Asgians</h3>
+            <p>The Asgian Empire and followers</p>
+            <a href="asgians.html" target="_self">Visit Project</a>
+        </div>
     </div>
-    <script src="script.js"></script>
+    </div>
 </body>
 </html>

@@ -132,3 +132,24 @@ body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
     background-color: #9966CC;
     color: #fff;
 }
+
+/* Back Button */
+
+.back-button {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background-color: #BA55D3;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #9966CC;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
