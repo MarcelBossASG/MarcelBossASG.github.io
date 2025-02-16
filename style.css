@@ -1,5 +1,3 @@
-/* Standard Format */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -46,7 +44,7 @@ h1, h2 {
 }
 
 .navbar ul li a:hover, .navbar ul li a.active {
-    background-color: #BA55D3;
+    background-color: #9966CC;
     color: #fff;
     border-radius: 4px;
 }
@@ -88,8 +86,6 @@ html {
     opacity: 1;
 }
 
-/* Dark Mode */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -108,7 +104,7 @@ body {
 }
 
 .navbar ul li a:hover, .navbar ul li a.active {
-    background-color: #BA55D3;
+    background-color: #9966CC;
     color: #fff;
 }
 
@@ -133,13 +129,11 @@ body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
     color: #fff;
 }
 
-/* Back Button */
-
 .back-button {
     position: absolute;
     top: 60px;
     left: 20px;
-    background-color: #BA55D3;
+    background-color: #9966CC;
     color: #fff;
     text-decoration: none;
     font-size: 16px;
