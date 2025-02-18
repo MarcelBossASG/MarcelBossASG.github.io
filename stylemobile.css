@@ -10,6 +10,30 @@ h1, h2 {
     color: #a372ff;
 }
 
+/* Main Content Styling */
+.main-content {
+    text-align: left;
+    padding: 2rem;
+    margin-top: 80px;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.spaced-paragraph {
+    margin: 1.5rem 0;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
 /* Navbar Styling */
 .navbar {
     background-color: #D8BFD8;
@@ -48,19 +72,11 @@ h1, h2 {
 .navbar ul li a:hover, .navbar ul li a.active {
     background-color: #9966CC;
     color: #fff;
-    border-radius: 4px;
-}
-
-/* Main Content Styling */
-.main-content {
-    padding: 80px 20px;
-    text-align: center;
-    min-height: 100vh;
 }
 
 /* Project Box Styling */
 .project-box {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
@@ -122,21 +138,6 @@ h1, h2 {
     color: #555;
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Fade-In Animation */
-.fade-in {
-    opacity: 0;
-    transition: opacity 2s;
-}
-
-.fade-in.visible {
-    opacity: 1;
-}
-
 /* Dark Theme Styling */
 body.dark-theme {
     background-color: #222;
@@ -176,4 +177,94 @@ body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
 .back-button:hover {
     background-color: #9966CC;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsive Styling */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .navbar ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .main-content {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .section {
+        padding: 50px 15px;
+        margin: 30px 0;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .section p {
+        font-size: 1rem;
+    }
+
+    .project-box {
+        width: 100%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .project-box h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .project-box p {
+        font-size: 0.9rem;
+    }
+
+    .project-box a {
+        padding: 8px 16px;
+    }
+
+    .spaced-paragraph {
+        margin: 1rem 0;
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-resolution: 2dppx) {
+    body {
+        font-size: 18px;
+    }
+
+    .navbar ul li {
+        margin-bottom: 15px;
+    }
+
+    .navbar ul li a {
+        font-size: 18px;
+    }
+
+    .main-content {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .section h2 {
+        font-size: 2.2rem;
+    }
+
+    .section p {
+        font-size: 1.1rem;
+    }
 }

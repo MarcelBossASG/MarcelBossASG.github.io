@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const fadeInElement = document.querySelector('.fade-in');
 
-    setTimeout(() => {
-        fadeInElement.classList.add('visible');
-    }, 100);
+    if (fadeInElement) {
+        setTimeout(() => {
+            fadeInElement.classList.add('visible');
+        }, 100);
+    }
 });
