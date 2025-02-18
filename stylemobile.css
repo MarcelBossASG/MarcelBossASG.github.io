@@ -265,3 +265,16 @@ body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
         font-size: 1.1rem;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+}
