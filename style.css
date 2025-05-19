@@ -1,4 +1,3 @@
-/* General Body Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -10,7 +9,6 @@ h1, h2 {
     color: #a372ff;
 }
 
-/* Navbar Styling */
 .navbar {
     background-color: #D8BFD8;
     padding: 10px 0;
@@ -51,21 +49,19 @@ h1, h2 {
     border-radius: 4px;
 }
 
-/* Main Content Styling */
 .main-content {
     padding: 80px 20px;
     text-align: center;
     min-height: 100vh;
 }
 
-/* Project Box Styling */
 .project-box {
     width: 80%;
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
-    border: 2px solid #BA55D3; /* Purple border */
+    border: 2px solid #6A5ACD;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -78,7 +74,7 @@ h1, h2 {
 
 .project-box h3 {
     font-size: 24px;
-    color: #6A5ACD; /* Purple color for project title */
+    color: #6A5ACD;
     margin-bottom: 15px;
 }
 
@@ -103,7 +99,6 @@ h1, h2 {
     background-color: #5B4EAB;
 }
 
-/* Section Styling */
 .section {
     padding: 80px 20px;
     margin: 50px 0;
@@ -122,12 +117,10 @@ h1, h2 {
     color: #555;
 }
 
-/* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Fade-In Animation */
 .fade-in {
     opacity: 0;
     transition: opacity 2s;
@@ -137,7 +130,6 @@ html {
     opacity: 1;
 }
 
-/* Dark Theme Styling */
 body.dark-theme {
     background-color: #222;
     color: white;
@@ -158,7 +150,6 @@ body.dark-theme .navbar ul li a:hover, .navbar ul li a.active {
     color: #fff;
 }
 
-/* Back Button Styling */
 .back-button {
     position: absolute;
     top: 60px;
