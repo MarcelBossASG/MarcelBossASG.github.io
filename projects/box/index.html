@@ -52,7 +52,7 @@
             display: none;
             text-align: center;
             font-family: sans-serif;
-            margin-top: 25px; /* You can reduce this later */
+            margin-top: 25px;
             font-size: 1.2em;
         }
 
@@ -79,7 +79,7 @@
 
     <div class="main-content">
         <h1 style="color: #FF0000;">Box.</h1>
-        <img src="/images/Box.png" alt="Box" class="box-image" onclick="animateBox(this)">
+        <img src="/images/box.png" alt="Box" class="box-image" onclick="animateBox(this)">
         <div id="box-message">it's literally just an animated box.</div>
         <div id="click-counter">Clicks: 0</div>
     </div>
@@ -90,9 +90,8 @@
         function animateBox(element) {
             clickCount++;
 
-            // Restart animation (spam-friendly)
             element.classList.remove("box-jump");
-            void element.offsetWidth; // Trigger reflow to restart animation
+            void element.offsetWidth;
             element.classList.add("box-jump");
 
             if (clickCount === 5) {
