@@ -13,22 +13,36 @@
 <link rel="manifest" href="/images/favicon/site.webmanifest" />
 
 <link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="/stylemobile.css">
-
 </head>
 <body>
-    <a href="/projects/" class="back-button">Back</a>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="/home/">Home</a></li>
-            <li><a href="/projects/" class="active">Projects</a></li>
-            <li><a href="/socials/">Socials</a></li>
-        </ul>
-    </nav> 
-
-<div class="main-content">
-    <h1>Marcel Airways</h1>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-profile very-left">
+          <img src="/images/MarcelBossASG.jpg" alt="Profile" class="profile-pic">
+          <span class="topbar-logo gradient-text">MarcelBossASG</span>
+        </div>
+        <nav class="topbar-nav">
+          <a href="/home/">Home</a>
+          <a href="/projects/" class="active">Projects</a>
+          <a href="/socials/">Socials</a>
+        </nav>
+        <button class="hamburger-menu" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <a href="/home/">Home</a>
+        <a href="/projects/" class="active">Projects</a>
+        <a href="/socials/">Socials</a>
+      </nav>
+      <div class="mobile-nav-backdrop"></div>
+    </header>
+    <a href="/projects/" class="close-button less-prominent" title="Close">&times;</a>
+    <div class="main-content">
+        <h1>Marcel Airways</h1>
 
     <p class="spaced-paragraph"><b>Marcel Airways started as a playful school project</b> — a fictional airline created by <b>MarcelBossASG</b>, where friends were hired as employees for fun and creativity.</p>
 
@@ -39,7 +53,24 @@
     <p class="spaced-paragraph"><b>Though fictional, Marcel Airways represents the spirit</b> of creativity and determination that continues to drive Marcel Corporations forward.</p>
 
     <p class="spaced-paragraph"><b>Marcel Airways existed before Marcel Corporations.</b></p>
-</div>
-
+    </div>
+ 
+    <footer class="bottombar">
+      <div class="bottombar-inner">
+        <div class="bottombar-socials subtle">
+          <a href="https://osu.ppy.sh/users/30492121" target="_blank" title="Osu!" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/osu.svg" alt="Osu!" class="app-icon-lg"></a>
+          <a href="https://myanimelist.net/profile/MarcelBossASG" target="_blank" title="MyAnimeList" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/myanimelist.svg" alt="MAL" class="app-icon-lg"></a>
+          <a href="https://www.youtube.com/channel/UCEtJtg6iqq3BWwP77SJwvzg" target="_blank" title="YouTube" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" class="app-icon-lg"></a>
+          <a href="https://steamcommunity.com/profiles/76561198247876340" target="_blank" title="Steam" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg" alt="Steam" class="app-icon-lg"></a>
+          <a href="https://github.com/MarcelBossASG" target="_blank" title="GitHub" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="app-icon-lg"></a>
+          <span class="app-icon-link" title="Discord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" class="app-icon-lg" onclick="navigator.clipboard.writeText('marcelbossasg');alert('Discord tag copied: marcelbossasg');"></span>
+        </div>
+        <div class="bottombar-trademark">
+          <h5><b>Marcel Corporations®</b> &mdash; The parent company behind all of my projects.<br>
+          The ® symbol represents its "official registered brand status."</h5>
+        </div>
+      </div>
+    </footer>
+    <script src="/script-mobile.js"></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger-menu');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const backdrop = document.querySelector('.mobile-nav-backdrop');
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    backdrop.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  }
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    mobileNav.classList.add('open');
+    backdrop.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+  }
+
+  hamburger.addEventListener('click', function () {
+    if (mobileNav.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  backdrop.addEventListener('click', closeMenu);
+
+  // Optional: close menu on nav link click (for SPA-like feel)
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Optional: close menu on resize to desktop
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 700) closeMenu();
+  });
+});
