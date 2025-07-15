@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   backdrop.addEventListener('click', closeMenu);
 
-  // Optional: close menu on nav link click (for SPA-like feel)
+ 
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Optional: close menu on resize to desktop
+
   window.addEventListener('resize', function () {
     if (window.innerWidth > 700) closeMenu();
   });
