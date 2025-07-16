@@ -39,3 +39,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.innerWidth > 700) closeMenu();
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const textElements = Array.from(document.querySelectorAll('p, h1')).filter(el => !el.closest('.project-box'));
+
+  const projectBoxes = Array.from(document.querySelectorAll('.project-box'));
+
+  textElements.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('pop-in');
+    }, i * 0.2 * 1000);
+  });
+
+  projectBoxes.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('pop-in');
+    }, i * 0.6 * 1000);
+  });
+});
