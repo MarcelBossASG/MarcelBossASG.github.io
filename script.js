@@ -57,3 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, i * 0.6 * 1000);
   });
 });
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const scale = 1 + scrollY / 1200;
+  document.querySelector('.smooth-background').style.transform = `scale(${scale})`;
+});
