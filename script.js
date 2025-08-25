@@ -54,9 +54,30 @@ document.addEventListener('DOMContentLoaded', function () {
       newsSliderContainer.style.opacity = '1';
       newsSliderContainer.style.transform = 'translateY(0)';
       showSlide(0);
-      // Ensure progress bar animates for first slide
+
       resetProgressBar();
       resetSlideTimer();
+
+      // set up image fit helper
+      function applyImageFit() {
+        document.querySelectorAll('.news-slide img').forEach(img => {
+          const wrapper = img.closest('.image-wrapper');
+          if (!wrapper || !img.naturalWidth) return;
+          const wrapperRatio = wrapper.clientWidth / wrapper.clientHeight;
+          const imgRatio = img.naturalWidth / img.naturalHeight;
+          img.classList.remove('fit-cover', 'fit-contain');
+          // if image is wider than wrapper, contain; otherwise cover
+          if (imgRatio > wrapperRatio) {
+            img.classList.add('fit-contain');
+          } else {
+            img.classList.add('fit-cover');
+          }
+        });
+      }
+
+      window.addEventListener('resize', applyImageFit);
+      // run once after a short delay to allow images to load
+      setTimeout(applyImageFit, 250);
 
       document.querySelectorAll('.news-arrow-left').forEach(leftArrow => {
         leftArrow.onclick = function(e) {
@@ -90,12 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function resetProgressBar() {
     clearInterval(progressInterval);
-    // Always reset all bars to 0% first
+
     progressBars.forEach(bar => {
       bar.style.transition = 'none';
       bar.style.width = '0%';
     });
-    // Force reflow to apply the width instantly
+
     void progressBars[0]?.offsetWidth;
     progressBars.forEach(bar => {
       bar.style.transition = '';
@@ -152,4 +173,63 @@ document.addEventListener('DOMContentLoaded', function () {
     slideTimer = setInterval(nextSlide, slideDuration);
   }
 
+  // Final fix to ensure snow covers the entire website dynamically
+  const canvas = document.createElement('canvas');
+  canvas.classList.add('snow-canvas');
+  canvas.style.position = 'fixed'; // Ensure it stays fixed on the viewport
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.zIndex = '-1'; // Lower z-index to underlay everything except the background
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+
+  function updateCanvasSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight; // Adjust to viewport height
+  }
+
+  updateCanvasSize();
+  window.addEventListener('resize', updateCanvasSize);
+
+  const snowflakes = [];
+  function createSnowflakes() {
+    for (let i = 0; i < 150; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 3 + 1,
+        speed: Math.random() * 0.2 + 0.1 // Reduced speed range for slower snowflakes
+      });
+    }
+  }
+
+  function drawSnowflakes() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    snowflakes.forEach(flake => {
+      ctx.beginPath();
+      ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  function updateSnowflakes() {
+    snowflakes.forEach(flake => {
+      flake.y += flake.speed;
+      if (flake.y > canvas.height) {
+        flake.y = -flake.radius;
+        flake.x = Math.random() * canvas.width;
+      }
+    });
+  }
+
+  function animateSnow() {
+    drawSnowflakes();
+    updateSnowflakes();
+    requestAnimationFrame(animateSnow);
+  }
+
+  createSnowflakes();
+  animateSnow();
 });
