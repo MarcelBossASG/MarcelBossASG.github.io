@@ -9,16 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f0f12; /* dark background for letterboxing when aspect ratios differ */
-  flex: 1 1 auto !important; /* fill available vertical space */
-  height: auto !important; /* allow flex to size it */
-  min-height: 0 !important; /* prevent min-height collapse in flex */
+  background-color: #0f0f12;
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
   display: block !important;
 }
 .image-wrapper img {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain !important; /* show entire image without cropping */
+  object-fit: contain !important;
   object-position: center center !important;
   background-color: transparent !important;
   display: block;
@@ -30,8 +30,8 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  flex: 0 0 auto !important; /* caption takes only needed space */
-  padding: 12px 0 !important; /* slightly tighter caption spacing */
+  flex: 0 0 auto !important;
+  padding: 12px 0 !important;
 }
 .news-arrow {
   background: transparent !important;
@@ -432,8 +432,8 @@ body.dark-theme .navbar ul li a.active {
     width: calc(100vw - 4px) !important;
     box-sizing: border-box;
     padding: 10px !important;
-    z-index: 1; /* Ensure it doesn't overlap */
-    position: static; /* Reset positioning to follow document flow */
+    z-index: 1;
+    position: static;
   }
   .news-slider {
     height: 220px !important;
@@ -768,7 +768,7 @@ p, h1, .project-box {
 }
 
 .with-line {
-  margin: 0 !important; /* remove all paragraph margins so spacing is controlled by the pseudo-element */
+  margin: 0 !important;
   padding: 0 !important;
 }
 
@@ -777,9 +777,9 @@ p, h1, .project-box {
   display: block;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.15);
-  margin-top: 12px !important;    /* increase gap between text and line */
-  margin-bottom: 12px !important; /* increase gap between line and news section */
-  position: static; /* follow document flow */
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+  position: static;
   z-index: auto;
 }
 
@@ -788,8 +788,8 @@ p, h1, .project-box {
   transform: translateY(20px);
   transition: opacity 1.6s cubic-bezier(.4,2,.6,1), transform 1.2s cubic-bezier(.4,2,.6,1);
   max-width: 700px;
-  margin: 5px auto; /* Set consistent spacing around the container */
-  padding: 28px !important; /* a bit more internal padding for the card */
+  margin: 5px auto;
+  padding: 28px !important;
   background-color: rgba(107, 84, 181, 0.15);
   border: 2px solid #642bbe;
   border-radius: 12px;
@@ -797,29 +797,26 @@ p, h1, .project-box {
   color: #eee;
   backdrop-filter: blur(2px);
   text-align: center;
-  margin-bottom: 40px !important; /* Add spacing between the news section and the bottom bar */
-  position: static; /* Reset positioning to follow document flow */
-  z-index: auto; /* Remove stacking context */
-  margin-top: 12px !important; /* slightly larger gap above news card */
+  margin-bottom: 40px !important;
+  position: static;
+  z-index: auto;
+  margin-top: 12px !important;
 }
 
-/* Increase text spacing and news card spacing */
 .main-content p {
-  margin-bottom: 1.25rem !important; /* slightly larger paragraph spacing */
+  margin-bottom: 1.25rem !important;
 }
 
 @media (max-width: 700px) {
-  /* remove main-content side padding on mobile so full-bleed elements align with viewport */
   .main-content {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
   .news-slider-container {
-    /* use parent-based width and auto margins to avoid viewport-translate rounding */
     width: calc(100% - 4px) !important;
     max-width: none !important;
-    margin: 8px auto 28px auto !important; /* auto margins center within parent */
+    margin: 8px auto 28px auto !important;
     margin-left: 2px !important;
     margin-right: 2px !important;
     left: auto !important;
@@ -864,7 +861,7 @@ p, h1, .project-box {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch;
-  justify-content: flex-start; /* image at top, caption below */
+  justify-content: flex-start;
   gap: 12px;
   padding: 0 15px 10px;
   box-sizing: border-box;
@@ -897,11 +894,11 @@ p, h1, .project-box {
 }
 
 .news-slide img.fit-cover {
-  object-fit: cover !important; /* fill and crop if necessary */
+  object-fit: cover !important;
 }
 
 .news-slide img.fit-contain {
-  object-fit: contain !important; /* show whole image with letterboxing */
+  object-fit: contain !important;
 }
 
 .progress-bar {
@@ -928,7 +925,6 @@ p, h1, .project-box {
   pointer-events: auto;
 }
 
-/* Strong override to ensure the news section appears as a boxed card on all viewports */
 .main-content > .news-slider-container,
 .news-slider-container {
   display: block !important;
@@ -945,20 +941,17 @@ p, h1, .project-box {
   box-sizing: border-box !important;
 }
 
-/* Ensure the inner slider keeps a visible height on desktop */
 @media (min-width: 701px) {
   .news-slider {
     height: 320px !important;
   }
 }
 
-/* Responsive sizing: mobile fills viewport with a 2px side gap; desktop slightly larger card */
 @media (max-width: 700px) {
   .news-slider-container {
-    /* use parent-based width and auto margins to avoid viewport-translate rounding */
     width: calc(100% - 4px) !important;
     max-width: none !important;
-    margin: 8px auto 28px auto !important; /* auto margins center within parent */
+    margin: 8px auto 28px auto !important;
     margin-left: 2px !important;
     margin-right: 2px !important;
     left: auto !important;
@@ -969,7 +962,7 @@ p, h1, .project-box {
     padding-right: 18px !important;
   }
   .news-slider {
-    height: 260px !important; /* increased mobile slider height */
+    height: 260px !important;
     min-height: 220px !important;
     max-height: 300px !important;
   }
@@ -978,38 +971,35 @@ p, h1, .project-box {
 
 @media (min-width: 701px) {
   .news-slider-container {
-    max-width: 1100px !important; /* larger desktop card */
+    max-width: 1100px !important;
     width: 100% !important;
-    margin: 20px auto 48px auto !important; /* more breathing room */
-    padding: 36px !important; /* larger internal padding */
+    margin: 20px auto 48px auto !important;
+    padding: 36px !important;
     border-radius: 16px !important;
     box-shadow: 0 14px 40px rgba(123,47,242,0.38) !important;
   }
   .news-slider {
-    height: 420px !important; /* increased desktop slider height */
+    height: 420px !important;
     min-height: 360px !important;
     max-height: 520px !important;
   }
   .image-wrapper { height: 360px !important; }
 }
 
-/* Final: enforce uniform cover-cropped images and more rectangular card */
-/* Desktop: wider card, moderate height (rectangular) */
 @media (min-width: 901px) {
   .news-slider-container {
-    max-width: 1200px !important; /* wider card */
+    max-width: 1200px !important;
     padding: 36px !important;
     margin: 24px auto 48px auto !important;
   }
   .news-slider {
-    height: 360px !important; /* overall slider height */
+    height: 360px !important;
   }
   .image-wrapper {
-    height: 300px !important; /* image height inside the slider */
+    height: 300px !important;
   }
 }
 
-/* Tablet / small desktop */
 @media (min-width: 701px) and (max-width: 900px) {
   .news-slider-container {
     max-width: 980px !important;
@@ -1020,10 +1010,8 @@ p, h1, .project-box {
   .image-wrapper { height: 280px !important; }
 }
 
-/* Mobile: fill width with 2px gap, taller card for readability */
 @media (max-width: 700px) {
   .news-slider-container {
-    /* use parent-based width and auto margins to avoid viewport-translate rounding */
     width: calc(100% - 4px) !important;
     max-width: none !important;
     margin: 12px 2px 32px 2px !important;
@@ -1033,7 +1021,6 @@ p, h1, .project-box {
   .image-wrapper { height: 220px !important; }
 }
 
-/* Fix: make slides use flex so image-wrapper fills remaining height and removes dead space */
 .news-slider {
   display: flex;
   align-items: stretch;
@@ -1049,22 +1036,21 @@ p, h1, .project-box {
   display: flex !important;
   flex-direction: column !important;
   align-items: stretch;
-  justify-content: flex-start; /* image at top, caption below */
+  justify-content: flex-start;
 }
 
 .image-wrapper {
-  flex: 1 1 auto !important; /* fill available vertical space */
-  height: auto !important; /* allow flex to size it */
-  min-height: 0 !important; /* prevent min-height collapse in flex */
+  flex: 1 1 auto !important; 
+  height: auto !important; 
+  min-height: 0 !important;
   display: block !important;
 }
 
 .news-caption {
-  flex: 0 0 auto !important; /* caption takes only needed space */
-  padding: 12px 0 !important; /* slightly tighter caption spacing */
+  flex: 0 0 auto !important;
+  padding: 12px 0 !important;
 }
 
-/* ensure images still cover their wrappers */
 .news-slide img {
   width: 100% !important;
   height: 100% !important;
@@ -1072,24 +1058,22 @@ p, h1, .project-box {
   display: block !important;
 }
 
-/* Mobile: full-bleed news card with tiny gap (final override) */
 @media (max-width: 700px) {
   .main-content > .news-slider-container,
   .news-slider-container {
-    /* use parent-based width and auto margins to avoid viewport-translate rounding */
-    width: calc(100% - 4px) !important; /* 2px gap each side */
+    width: calc(100% - 4px) !important;
     margin-left: 2px !important;
     margin-right: 2px !important;
     margin-top: 8px !important;
     margin-bottom: 28px !important;
     max-width: none !important;
-    padding: 18px !important; /* comfortable padding on mobile */
+    padding: 18px !important;
     box-sizing: border-box !important;
     border-radius: 10px !important;
     box-shadow: 0 8px 24px rgba(123,47,242,0.28) !important;
   }
   .news-slider {
-    height: 300px !important; /* a bit taller so images fill nicely */
+    height: 300px !important;
     min-height: 260px !important;
   }
   .image-wrapper {
@@ -1097,16 +1081,13 @@ p, h1, .project-box {
   }
 }
 
-/* Center mobile news card: ensure it's centered even when parent has padding */
 @media (max-width: 700px) {
   .news-slider-container {
-    /* use parent-based width and auto margins to avoid viewport-translate rounding */
-    width: calc(100% - 4px) !important; /* 2px gap each side */
+    width: calc(100% - 4px) !important;
     max-width: none !important;
     box-sizing: border-box !important;
     padding-left: 18px !important;
     padding-right: 18px !important;
-    /* compute margin offset so it centers relative to viewport, not parent */
     margin-left: calc((100% - 100vw) / 2 + 2px) !important;
     margin-right: calc((100% - 100vw) / 2 + 2px) !important;
     left: auto !important;
@@ -1115,12 +1096,11 @@ p, h1, .project-box {
   }
 }
 
-/* Final mobile center override: force true viewport-centering and clear conflicting offsets */
 @media (max-width: 700px) {
   .main-content { padding-left: 0 !important; padding-right: 0 !important; }
   .news-slider-container {
     position: relative !important;
-    width: calc(100vw - 4px) !important; /* 2px gap each side */
+    width: calc(100vw - 4px) !important;
     max-width: none !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -1134,7 +1114,6 @@ p, h1, .project-box {
   }
 }
 
-/* Snow overlay canvas */
 .snow-canvas {
   position: absolute;
   top: 0;
@@ -1142,9 +1121,9 @@ p, h1, .project-box {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1; /* Place it behind all content */
+  z-index: -1;
   mix-blend-mode: screen;
-  opacity: 0.18; /* subtle */
+  opacity: 0.18;
 }
 @media (prefers-reduced-motion: reduce) {
   .snow-canvas { display: none; }
