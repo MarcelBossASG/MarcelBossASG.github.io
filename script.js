@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth > 700) closeMenu();
   });
 
-  const textElements = Array.from(document.querySelectorAll('p, h1')).filter(
-    el => !el.closest('.project-box')
-  );
+  const textElements = Array.from(document.querySelectorAll('p, h1'));
   const projectBoxes = document.querySelectorAll('.project-box');
 
   textElements.forEach((el, i) =>
