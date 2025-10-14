@@ -1,7 +1,11 @@
 const bgm = document.getElementById('bgm');
-document.addEventListener('keydown', e => {
-  if (e.key.toLowerCase() === 'm') bgm.paused ? bgm.play() : bgm.pause();
-});
+const muteBtn = document.getElementById('muteBtn');
+
+if (bgm && muteBtn) {
+  muteBtn.addEventListener('click', () => {
+    bgm.paused ? bgm.play() : bgm.pause();
+  });
+}
 
 const signupForm = document.getElementById('signup-form');
 const topButtons = document.querySelectorAll('.top-signup');
@@ -45,10 +49,14 @@ function validateAndConfirm() {
     }
   });
 
-  if (allValid) {
-    signupForm.innerHTML = `<p class="confirmation-msg">Your pre-registration is confirmed!</p>`;
-    signupForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+if (allValid) {
+  signupForm.innerHTML = `
+    <p class="confirmation-msg" style="margin:2px 0; line-height:1.2;">Your pre-registration is confirmed!</p>
+    <p class="hint" style="margin:2px 0; line-height:1.2;">This is absolutely useless btw :3</p>
+    <p class="hint" style="margin:2px 0; line-height:1.2;">(If you genuinely have a question DM @marcelbossasg on discord)</p>
+  `;
+  signupForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 }
 
 function openSignupFormTop() {

@@ -1,0 +1,253 @@
+/* General body styling */
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+
+    display: flex;           /* make body a flex container */
+    flex-direction: column;  /* stack children vertically */
+    min-height: 100vh;       /* fill the full viewport height */
+}
+
+.news-article {
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 2em;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-size: 1.2rem;       /* slightly bigger text */
+    line-height: 1.8;        /* more vertical spacing */
+    letter-spacing: 0.5px;   /* space between letters slightly more */
+}
+
+.news-article h1, .news-article h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.news-article p {
+    margin-bottom: 1.5em;
+    font-size: 1.15rem;
+}
+
+.news-article strong {
+    font-size: 1.2rem;
+    letter-spacing: 0.8px;
+}
+
+
+.news-main {
+    flex: 1;                 /* take up remaining space, pushing footer down */
+}
+
+/* Header styling */
+.news-header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 2em;
+    border-bottom: 4px solid #007BFF;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 25px;
+    font-family: 'Merriweather', serif;
+}
+
+.news-slider-container {
+    max-width: 1200px;
+    margin: 2em auto;      /* vertical spacing from top/bottom */
+    padding: 0 1em;        /* horizontal spacing */
+    position: relative;
+}
+
+.news-title {
+    font-size: 2em;
+    color: #007BFF;
+    margin-bottom: 1em;    /* space between title and slider */
+    text-align: left;       /* aligns left instead of floating in the middle */
+}
+
+.news-header .logo {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.news-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding-bottom: 5px;
+}
+
+.news-slider {
+    display: flex;
+    width: 200%; /* 2 slides */
+    transition: transform 0.5s ease-in-out;
+}
+
+.news-slide {
+    flex: 0 0 50%; /* each slide takes half of slider width */
+    position: relative;
+}
+
+.news-slide img {
+    width: 100%;         /* fill the slider container width */
+    height: 60vh;        /* give it a tall but reasonable height */
+    object-fit: cover;   /* crop without stretching */
+    display: block;
+    border-radius: 10px; /* matches container rounding */
+}
+
+.news-caption {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    max-width: 90%;
+}
+
+.news-caption h3 {
+    margin: 0 0 0.5em;
+    font-size: 1.5em;
+}
+
+.news-caption p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.news-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.news-controls button {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.news-controls button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.news-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.news-dots .dot {
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.news-dots .dot.active {
+    background: #007BFF;
+}
+
+/* Articles grid styling */
+.news-articles {
+    margin: 2em auto;
+    max-width: 1200px;
+    padding: 2em;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-articles h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #007BFF;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+}
+
+.articles-grid article {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.articles-grid article:hover {
+    transform: translateY(-5px);
+}
+
+.articles-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.articles-grid h3 {
+    font-size: 1.2em;
+    margin: 1em;
+}
+
+.articles-grid p {
+    font-size: 1em;
+    margin: 0 1em 1em;
+    color: #666;
+}
+
+.articles-grid a {
+    display: block;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    margin: 0 1em 1em;
+}
+
+.articles-grid a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+.news-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5em 0;
+    margin-top: 2em;
+    border-top: 4px solid #007BFF;
+}

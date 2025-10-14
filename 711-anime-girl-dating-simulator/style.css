@@ -120,7 +120,7 @@ body {
   transition: max-height .5s ease, opacity .5s ease;
   display: flex; flex-direction: column; gap: .8rem;
   margin-top: 1.6rem;
-  width: min(360px, 92%);
+  width: min(650px, 92%);
   margin-left: auto; margin-right: auto;
 }
 .signup-form.active { max-height: 600px; opacity: 1; }
@@ -156,4 +156,20 @@ footer .gradient-text { background: linear-gradient(90deg, #ff66cc 0%, #ffcc66 1
   .title { font-size: 2.2rem; }
   .subtitle { font-size: 1.05rem; }
   .signup-form { width: 92%; }
+}
+
+/* Mute/Unmute Button */
+#muteBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
