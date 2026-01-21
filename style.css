@@ -104,7 +104,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('/self-host/background.png') no-repeat center top;
+  background: url('/background.png') no-repeat center top;
   background-size: cover;
   opacity: 0.5;
   pointer-events: none;
@@ -203,7 +203,7 @@ body.dark-theme .navbar ul li a.active {
 }
 .topbar-nav a.active,
 .topbar-nav a:hover {
-  background: #7b2ff2;
+  background: linear-gradient(90deg, #7b2ff2 0%, #a18cd1 100%);
   color: #fff;
 }
 
@@ -320,9 +320,11 @@ body.dark-theme .navbar ul li a.active {
   transition: background 0.2s, box-shadow 0.2s;
   padding: 0;
 }
-.bottombar-socials.subtle .app-icon-link:hover {
-  background: #7b2ff2;
-  box-shadow: 0 4px 16px #7b2ff244;
+@media (hover: hover) {
+  .bottombar-socials.subtle .app-icon-link:hover {
+    background: linear-gradient(90deg, #7b2ff2 0%, #a18cd1 100%);
+    box-shadow: 0 4px 16px #7b2ff244;
+  }
 }
 .bottombar-socials.subtle .app-icon-lg {
   width: 44px;
@@ -331,10 +333,12 @@ body.dark-theme .navbar ul li a.active {
   transition: transform 0.2s, filter 0.2s;
   opacity: 0.95;
 }
-.bottombar-socials.subtle .app-icon-link:hover .app-icon-lg {
-  transform: scale(1.15) rotate(-8deg);
-  filter: drop-shadow(0 4px 16px #7b2ff244);
-  opacity: 1;
+@media (hover: hover) {
+  .bottombar-socials.subtle .app-icon-link:hover .app-icon-lg {
+    transform: scale(1.15) rotate(-8deg);
+    filter: drop-shadow(0 4px 16px #7b2ff244);
+    opacity: 1;
+  }
 }
 .bottombar-trademark {
   margin-top: 18px;
@@ -401,7 +405,7 @@ body.dark-theme .navbar ul li a.active {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 80px;
-  padding: 0 40px;
+  padding: 0 20px;
   max-width: 1400px;
   margin: 0 auto;
   margin-bottom: 80px;
@@ -412,7 +416,7 @@ body.dark-theme .navbar ul li a.active {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 0 16px; 
+    padding: 0 5px; 
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -470,6 +474,9 @@ body.dark-theme .navbar ul li a.active {
     height: 24px !important;
     font-size: 1.1rem !important;
   }
+  .main-content {
+    padding: 2rem 5px;
+  }
 }
 
 
@@ -524,7 +531,7 @@ body.dark-theme .navbar ul li a.active {
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  background-color: #7b2ff2;
+  background: linear-gradient(90deg, #7b2ff2 0%, #a18cd1 100%);
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 16px;
@@ -533,7 +540,7 @@ body.dark-theme .navbar ul li a.active {
 }
 
 .project-box a:hover {
-  background-color: #a18cd1;
+  background: #642bbe;
   box-shadow: 0 6px 18px #a18cd1cc;
 }
 
@@ -578,7 +585,7 @@ body.dark-theme .navbar ul li a.active {
   right: -260px;
   width: 220px;
   height: 100vh;
-  background: linear-gradient(90deg, #181028 0%, #3a236b 100%);
+  background: linear-gradient(90deg, rgba(24,16,40,0.8) 0%, rgba(58,35,107,0.8) 100%);
   color: #fff;
   padding: 90px 24px 32px 24px;
   border-left: 2.5px solid #7b2ff2;
@@ -588,6 +595,8 @@ body.dark-theme .navbar ul li a.active {
   gap: 18px;
   font-size: 1.2rem;
   will-change: right;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   visibility: hidden;
   opacity: 0;
@@ -609,9 +618,9 @@ body.dark-theme .navbar ul li a.active {
   height: 44px;
   min-width: 100px;
   position: relative;
-  color: #7b2ff2;
+  color: #fff;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(90deg, #7b2ff2 0%, #a18cd1 100%);
   box-shadow: 0 2px 8px #3a236b33;
   border-radius: 14px;
   margin-bottom: 2px;
@@ -623,7 +632,7 @@ body.dark-theme .navbar ul li a.active {
 
 .mobile-nav a:hover,
 .mobile-nav a.active {
-  background: #7b2ff2;
+  background: #642bbe;
   color: #fff;
   box-shadow: 0 4px 16px #7b2ff244;
 }
@@ -703,6 +712,9 @@ body.dark-theme .navbar ul li a.active {
   }
   .hamburger-menu {
     display: flex;
+  }
+  .main-content {
+    padding: 2rem 5px;
   }
 
 @media (max-width: 900px) {
