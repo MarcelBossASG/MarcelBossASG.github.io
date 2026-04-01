@@ -184,4 +184,28 @@ if (newsSliderContainer) {
     requestAnimationFrame(animateSnow);
   }
   requestAnimationFrame(animateSnow);
+  requestAnimationFrame(animateSnow);
+
+  // Minimal watermark: positioned relative to the bottombar, beneath it
+  (function(){
+    const watermark = document.createElement('div');
+    watermark.className = 'bg-watermark';
+    watermark.textContent = '@MarcelBossASG - Euro Truck Simulator 2';
+    document.body.appendChild(watermark);
+
+    function placeWatermark(){
+      const bottombar = document.querySelector('.bottombar');
+      if(!bottombar) return;
+      const wmHeight = watermark.offsetHeight || 18;
+      const top = bottombar.offsetTop - wmHeight - 8;
+      watermark.style.top = (top > 8 ? top : 8) + 'px';
+      watermark.style.left = (bottombar.offsetLeft + 12) + 'px';
+      watermark.style.position = 'absolute';
+    }
+
+    window.addEventListener('resize', placeWatermark);
+    window.addEventListener('load', placeWatermark);
+    setTimeout(placeWatermark, 150);
+  })();
+
 });
