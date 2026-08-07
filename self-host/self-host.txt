@@ -2,3 +2,5 @@ hey, if you found this you are probably smarter then your typical person (or you
 you also shouldent technically be here :3
 
 have a great day!
+
+i have to add something so that i can re-push this to github so that actions decideds to actually update the site since i cant retry it for some reason lol
