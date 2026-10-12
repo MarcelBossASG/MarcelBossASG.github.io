@@ -27,6 +27,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
 <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
+<script src="/themes/theme-init.js"></script>
 <link rel="stylesheet" href="/style.css">
     </head>
     <body>
@@ -59,24 +60,34 @@
     </header>
 
     <main class="main-content irl-page">
-      <h1>Welcome to the page where i show some stuff ive done.</h1>
+      <h1>Welcome to the page where i show some of the stuff ive done.</h1>
       <p>
-        Some of the images have tooltips, just hover over them or if your on mobile click on the image.
+        Some images have tooltips! hover on desktop. (Mobile is currently bugged, shocker)
         <br>
         <strong>Go ahead click the buttons, i know you want to.</strong>
       </p>
       <div class="section">
 
         <section class="irl-accordion" id="irl-accordion">
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-gfx" id="btn-gfx">
-                GFX <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/gfx/banner.jpg" alt="Graphic design banner">
+              <div class="irl-card-content">
+                <h2>GFX</h2>
+                <p>Some random stuff ive made over the years in krita.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-gfx" id="btn-gfx">View projects</button>
+              </div>
+            </div>
             <div id="sect-gfx" class="irl-panel" role="region" aria-labelledby="btn-gfx" hidden>
-              <h1>I do GFX sometimes</h1>
-              <div class="irl-gallery">
+
+              <h1>
+                I do GFX sometimes
+              </h1>
+              <p>
+                Pretty neat right?
+              </p>
+
+              <div class="irl-gallery irl-gallery-art">
                 <img data-src="https://pbs.twimg.com/media/HOQ8O46XwAAWc83?format=jpg&name=4096x4096" alt="something... somewhere" data-tooltip="Hmmmmmmm.png <br><br> Pretty happy with how it came out.">
                 <img data-src="https://pbs.twimg.com/media/HM5Gc9tXEAArpQV?format=jpg&name=4096x4096" alt="poster of awa subaru" data-tooltip="I guess you could count this as fan art in a way. <br><br> Im really happy with how this came out!">
                 <img data-src="https://pbs.twimg.com/media/HNIC_FMWUAA58tQ?format=jpg&name=4096x4096" alt="poster of 5̸̹̥̞͐̿#̶̳̅̃B̴̩̻͙̆͛͂2̶̘̞̆̐ͅ3̸̦̞̦̖͊̉͛^̵̨͉͕̪̒̀͆̕$̷͙̼̄͐" data-tooltip="lets just say i was bored again... <br><br> damn it tooks good though.">
@@ -93,39 +104,51 @@
             </div>
           </div>
 
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-junior" id="btn-junior">
-                Photography <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/photography/DSCN3455.jpg" alt="Rock and ocean photograph">
+              <div class="irl-card-content">
+                <h2>Photography</h2>
+                <p>A few photos ive taken and edited.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-junior" id="btn-junior">View photos</button>
+              </div>
+            </div>
             <div id="sect-junior" class="irl-panel" role="region" aria-labelledby="btn-junior" hidden>
-              <h1>I take photos for fun.</h1>
-              <p>Who Knew?</p>
-              <div class="irl-gallery">
+
+              <h1>
+                I take photos for fun.
+              </h1>
+              <p>
+                Who Knew?
+              </p>
+
+              <div class="irl-gallery irl-gallery-photos">
                 <img data-src="/assets/images/irl/photography/IMG_9241.jpg" alt="Photo of Miku infront of trees" data-tooltip="Someone i know asked if i could take some pictures of his miku figurine and put it up here. <br><br> the vision was there :3 <br><br> To some she means alot more then just the music she creates. <br><br> JP Translation: <br> &quot;In our memories, the two of us gazed upon eternity.&quot;">
                 <img data-src="/assets/images/irl/photography/DSCN3455.jpg" alt="Photo of rock and ocean" data-tooltip="One of my most recent photos taken and edited. <br><br> Out of all the photos ive taken so far i think this one has came out the best.">
                 <img data-src="/assets/images/irl/photography/DSCN1102.jpg" alt="Photo from plane showing the moon" data-tooltip="A really nice photo with a great view of the moon. <br><br> This would also be a photo on the slightly older side.">
                 <img data-src="/assets/images/irl/photography/DSCN1393.jpg" alt="Photo of train taken from the train station floor" data-tooltip="One of the many trains in Gdynia edited with a more vintage look. <br><br> Came out pretty nice in my opinion.">
                 <img data-src="/assets/images/irl/photography/DSCN2329.jpg" alt="Photo of Nissan Skyline" data-tooltip="I believe this is the second photo i ever edited. If you couldent tell already, i like purple. <br><br> Peak american engineering. <br> Thanks Dodge.">
-                <img data-src="/assets/images/irl-stuff.jpg" class="imageright" alt="Photo of model car with edited fake headlights" data-tooltip="Oh hey look its the irl-stuff preview image in /Projects. <br><br> Welp now you know that i took this photo and edited it. In fact this would have been one of my very first photography aimed photo. <br><br> <strong>(If that makes any sense)</strong>">
+                <img data-src="/assets/images/irl-stuff.jpg" alt="Photo of model car with edited fake headlights" data-tooltip="Oh hey look its the irl-stuff preview image in /Projects. <br><br> Welp now you know that i took this photo and edited it. In fact this would have been one of my very first photography aimed photo. <br><br> <strong>(If that makes any sense)</strong>">
               </div>
             </div>
           </div>
 
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-misc" id="btn-misc">
-                Keypad Project <span class="chev">▾</span>
-              </button>
-            </h3>
-            <div id="sect-misc" class="irl-panel" role="region" aria-labelledby="btn-misc" hidden>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/keypad/keypad_keypad.jpg" alt="Custom-built keypad">
+              <div class="irl-card-content">
+                <h2>Keypad v1</h2>
+                <p>A diy keypad designed and made by me.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-keypad-v1" id="btn-keypad-v1">View project</button>
+              </div>
+            </div>
+            <div id="sect-keypad-v1" class="irl-panel" role="region" aria-labelledby="btn-keypad-v1" hidden>
               <h1>
                 A diy keypad i designed and made from scratch. Because you know, why not?
                 <br><br>
               </h1>
-              <div class="irl-gallery">
-                <img data-src="/assets/images/irl/keypad/keypad_keypad.jpg" class="imageleft" alt="the keypad in all its glory" data-tooltip="What a beauty! <br><br> <strong>Im so proud of this little thing.</strong>">
+              <div class="irl-gallery irl-gallery-keypad">
+                <img data-src="/assets/images/irl/keypad/keypad_keypad.jpg" alt="the keypad in all its glory" data-tooltip="What a beauty! <br><br> <strong>Im so proud of this little thing.</strong>">
                 <p>
                   <strong>I dont have any images of the initial design so this will do.</strong>
                   <br><br>
@@ -147,23 +170,43 @@
                 <img data-src="/assets/images/irl/keypad/keypad_cad.jpg" alt="cad design of the keypad" data-tooltip="The final Cad design. <br><br> I cant thing of anything else to say for this image.">
                 <img data-src="/assets/images/irl/keypad/keypad_assembly.jpg" alt="assembly of the keypad" data-tooltip="Oh look you can see the spaghetti mess and shabby soldering job in the distance. <br><br> Hey i wasent about to learn how to make a pcb and spend like 300$ from a tiny mistake <br><br> The most important thing is that it works.">
                 <img data-src="/assets/images/irl/keypad/keypad_parts.jpg" alt="some of the parts used in the keypad" data-tooltip="Some of the parts i used to make the damn thing <br><br> <strong>(Minus some screws and resistors)</strong>">
-                <img data-src="/assets/images/irl/keypad/keypad_for_scale.jpg" class="imagecenter" alt="keypad with the cad design of the keypad in the background" data-tooltip="A neat photo i took after assembling it. <br><br> <strong>Keypad for scale lol.</strong>">
+                <img data-src="/assets/images/irl/keypad/keypad_for_scale.jpg" alt="keypad with the cad design of the keypad in the background" data-tooltip="A neat photo i took after assembling it. <br><br> <strong>Keypad for scale lol.</strong>">
               </div>
             </div>
           </div>
+
+           <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/keypad_placeholder.png" alt="Coming... One day... :3">
+              <div class="irl-card-content">
+                <h2>Keypad v2</h2>
+                <p>The expanded and enhanced version of the Keypad v1 featuring a custom PCB made by yours truely.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-keypad-v2" id="btn-keypad-v2">View project</button>
+              </div>
+            </div>
+            <div id="sect-keypad-v2" class="irl-panel" role="region" aria-labelledby="btn-keypad-v2" hidden>
+              <h1>
+                Coming soon???
+              </h1>
+            </div>
+          </div>
           
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-wood" id="btn-wood">
-                Lazer Pointer Project <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/lazer_project/lazer_full.jpg" alt="Rebuilt laser pointer">
+              <div class="irl-card-content">
+                <h2>Laser Pointer Project</h2>
+                <p>An old laser pointer taken apart and reused in a custom 3D printed body.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-wood" id="btn-wood">View project</button>
+              </div>
+            </div>
             <div id="sect-wood" class="irl-panel" role="region" aria-labelledby="btn-wood" hidden>
               <h3>A random idea i got after finding old an old lazer diode.</h3>
               <p>Yes i realize i mispelled laser as lazer but im so far into writing that i cant be bothered to change it.</p>
+              <p>(And yes i know CTRL+F exists)</p>
               <div class="irl-gallery">
                 <img data-src="/assets/images/irl/lazer_project/lazer_for_scale.jpg" alt="lazer pointer with lazer pointer cad in the background" data-tooltip="Lazer for scale.">
-                <img data-src="/assets/images/irl/lazer_project/lazer_full.jpg" style="max-height: 700px; width: auto;" class="imageright" alt="lazer pointer" data-tooltip="You can see the safety indicator led if you look closely.">
+                <img data-src="/assets/images/irl/lazer_project/lazer_full.jpg" alt="lazer pointer" data-tooltip="You can see the safety indicator led if you look closely.">
                 <p>
                   <strong>Picture this:</strong>
                   <br><br>
@@ -185,18 +228,21 @@
                   <br><br>
                   Overall, it wasent too hard to make and dident take too many prototypes, not as much as the keypad anyway... there was some issues with how to assemble it and sizing but i figured it out in the end.
                 </p>
-                <img data-src="/assets/images/irl/lazer_project/lazer_parts.jpg" class="imageleft" alt="some of the parts used" data-tooltip="Some of the parts i used minus a led, resistor and switch.">
+                <img data-src="/assets/images/irl/lazer_project/lazer_parts.jpg" alt="some of the parts used" data-tooltip="Some of the parts i used minus a led, resistor and switch.">
                 <img data-src="/assets/images/irl/lazer_project/lazer_diode.jpg" alt="soldered diode" data-tooltip="if you look closely you can see my absolutely amazing soldering job... <br><br> Dont worry i added eletrical tape later. <br><br> Also i almost forgot to mention that i used connectors for the wiring so i could seperate the two halfs of the Lazer body, also made soldering easier.">
               </div>
             </div>
           </div>
 
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder3" id="btn-placeholder3">
-                Song Covers <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="https://img.youtube.com/vi/MM8n3ivvMio/hqdefault.jpg" alt="Thumbnail for a song cover">
+              <div class="irl-card-content">
+                <h2>Song Covers</h2>
+                <p>Random song covers i decided to make :3</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder3" id="btn-placeholder3">Listen to covers</button>
+              </div>
+            </div>
 
             <div id="sect-placeholder3" class="irl-panel" role="region" aria-labelledby="btn-placeholder3" hidden>
               <h1>I make song covers for fun or something like that</h1>
@@ -277,14 +323,17 @@
               </div>
             </div>
           </div>
-                    <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder1" id="btn-placeholder1">
-                Engineering Project <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/engineering/side.jpg" alt="Side view of a model forklift">
+              <div class="irl-card-content">
+                <h2>Engineering Project</h2>
+                <p>My Junior Cert Engineering Project</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder1" id="btn-placeholder1">View project</button>
+              </div>
+            </div>
             <div id="sect-placeholder1" class="irl-panel" role="region" aria-labelledby="btn-placeholder1" hidden>
-              <h1>Junior Cert Forklift Engineering Project</h1>
+              <h1>Junior Cert Forklift Engineering Project.</h1>
               <div class="irl-gallery">
                 <img data-src="/assets/images/irl/engineering/side.jpg" alt="side view" data-tooltip="I should have inserted something for scale in this photo. <br> (its alot bigger then it looks)">
                 <img data-src="/assets/images/irl/engineering/controlpanel.jpg" alt="view of the control panel" data-tooltip="Look at thoese switches. Wow 😭 <br><br> One servo controller, one on off switch and one for lifting and lowering the forks.">
@@ -303,22 +352,25 @@
                   <br><br>
                   Thats about as much text as i could come up with for this section so heres a few more images.
                 </p>
-                <img data-src="/assets/images/irl/engineering/forks.jpg" class="imageleft" alt="view of the forks" data-tooltip="Insert random closeup photo. <br><br> xD">
+                <img data-src="/assets/images/irl/engineering/forks.jpg" alt="view of the forks" data-tooltip="Insert random closeup photo. <br><br> xD">
                 <img data-src="/assets/images/irl/engineering/leadscrew.jpg" alt="view of the leadscrew mechanism" data-tooltip="A slightly closer look at the leadscrew that moves the forks up and down.">
-                <img data-src="/assets/images/irl/engineering/front.jpg" class="imagecenter" alt="front view" data-tooltip="Fun fact: <br><br> The front part of the forklift (the tallest and biggest part in frame) was bent the wrong way, hence it looks so banged up.">
+                <img data-src="/assets/images/irl/engineering/front.jpg" alt="front view" data-tooltip="Fun fact: <br><br> The front part of the forklift (the tallest and biggest part in frame) was bent the wrong way, hence it looks so banged up.">
               </div>
             </div>
           </div>
 
-                              <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder2" id="btn-placeholder2">
-                Woodwork Project <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/woodwork/front.jpg" alt="Finished woodwork project">
+              <div class="irl-card-content">
+                <h2>Woodwork Project</h2>
+                <p>My Junior Cert Woodwork Project.</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-placeholder2" id="btn-placeholder2">View project</button>
+              </div>
+            </div>
             <div id="sect-placeholder2" class="irl-panel" role="region" aria-labelledby="btn-placeholder2" hidden>
               <h1>Junior Cert Woodwork Project</h1>
-              <div class="irl-gallery">
+              <div class="irl-gallery irl-gallery-woodwork">
                 <img data-src="/assets/images/irl/woodwork/front.jpg" alt="front view" data-tooltip="This photo blinds you. <br><br> It also showcases what the finished design looks like.">
                 <p>
                   The project i made for my woodwork exam, but unlike engineering this was designed from the ground up.
@@ -343,17 +395,20 @@
                   <br>
                   (im too lazy)
                 </p>
-                <img data-src="/assets/images/irl/woodwork/side.jpg" alt="side view" class="imageleft" data-tooltip="This photo dosent blind you. <br><br> It also shows you the finished design. <br> Pretty neat!">
+                <img data-src="/assets/images/irl/woodwork/side.jpg" alt="side view" data-tooltip="This photo dosent blind you. <br><br> It also shows you the finished design. <br> Pretty neat!">
               </div>
             </div>
           </div>
 
-          <div class="irl-item">
-            <h3 class="irl-header">
-              <button class="irl-toggle" aria-expanded="false" aria-controls="sect-other" id="btn-other">
-                Other Stuff <span class="chev">▾</span>
-              </button>
-            </h3>
+          <div class="irl-item project-box">
+            <div class="irl-card">
+              <img class="irl-card-image" src="/assets/images/irl/turbine/topview.jpg" alt="Electronic ducted fan project">
+              <div class="irl-card-content">
+                <h2>Other Projects</h2>
+                <p>Some random 3D printed projects off the internet</p>
+                <button class="irl-toggle" aria-expanded="false" aria-controls="sect-other" id="btn-other">View projects</button>
+              </div>
+            </div>
             <div id="sect-other" class="irl-panel" role="region" aria-labelledby="btn-other" hidden>
               <h1>Projects that dident make the cut to have their own section</h1>
               <h3><br><br> [EDF - Electronic Ducted Fan]</h3>

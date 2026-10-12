@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog - MarcelBossASG</title>
+  <meta name="description" content="Random news and thoughts from MarcelBossASG.">
+
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/themes/theme-init.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="smooth-background"></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-profile very-left">
+        <img src="/assets/images/marcelbossasg.jpg" alt="Profile" class="profile-pic">
+        <a href="/" class="topbar-logo gradient-text">MarcelBossASG</a>
+      </div>
+      <nav class="topbar-nav">
+        <a href="/">Home</a>
+        <a href="/projects/" class="active">Projects</a>
+        <a href="/about/">About</a>
+      </nav>
+      <button class="hamburger-menu" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <a href="/">Home</a>
+      <a href="/projects/" class="active">Projects</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="mobile-nav-backdrop"></div>
+  </header>
+
+  <main class="main-content blog-page">
+    <h1 class="spaced-paragraph">Blog</h1>
+    <p>Random stuff. Thats all you need to know.</p>
+
+    <section class="blog-list" aria-label="Blog posts">
+      <article class="project-box blog-post">
+        <time datetime="2026-10-12">October 12, 2026</time>
+        <h2>2 Year Website Anniversary!</h2>
+        <p>i totally knew this was today...</p>
+        <button class="irl-toggle" aria-expanded="false" aria-controls="blog-first-post" id="btn-blog-first-post">Read post</button>
+        <div id="blog-first-post" class="irl-panel" role="region" aria-labelledby="btn-blog-first-post" hidden>
+          <article class="blog-post-content">
+            <time datetime="2026-10-12">October 12, 2026</time>
+            <h1>2 Year Website Anniversary!</h1>
+            <p>
+              So funny thing... i randomly decided to work on my site since i havent in awhile and well uh... the 2 year anniversary is today xD
+              <br><br>
+              No i dont know what are the odds of this but ay, peak shit :3
+              <br>
+              Yeah thats about all i have to write.
+              <br><br>
+              MarcelBossASG-
+            </p>
+            
+          </article>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="bottombar">
+    <div class="bottombar-inner">
+      <div class="bottombar-socials subtle">
+        <a href="https://osu.ppy.sh/users/30492121" target="_blank" rel="noopener noreferrer" title="Osu!" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/osu.svg" alt="Osu!" class="app-icon-lg"></a>
+        <a href="https://myanimelist.net/profile/MarcelBossASG" target="_blank" rel="noopener noreferrer" title="MyAnimeList" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/myanimelist.svg" alt="MAL" class="app-icon-lg"></a>
+        <a href="https://www.youtube.com/channel/UCEtJtg6iqq3BWwP77SJwvzg" target="_blank" rel="noopener noreferrer" title="YouTube" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" class="app-icon-lg"></a>
+        <a href="https://steamcommunity.com/profiles/76561198247876340" target="_blank" rel="noopener noreferrer" title="Steam" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/steam.svg" alt="Steam" class="app-icon-lg"></a>
+        <a href="https://github.com/MarcelBossASG" target="_blank" rel="noopener noreferrer" title="GitHub" class="app-icon-link"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="app-icon-lg"></a>
+        <span class="app-icon-link" title="Discord"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" class="app-icon-lg" onclick="navigator.clipboard.writeText('marcelbossasg');alert('Discord tag copied: marcelbossasg');"></span>
+      </div>
+    </div>
+  </footer>
+  <script src="/script.js"></script>
+</body>
+</html>

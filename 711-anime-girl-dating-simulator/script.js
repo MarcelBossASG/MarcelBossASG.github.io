@@ -1,3 +1,15 @@
+const optimizeImages = localStorage.getItem('site-image-quality') !== 'false';
+document.querySelectorAll('img').forEach(image => {
+  const rect = image.getBoundingClientRect();
+  const isInViewport = image.getClientRects().length > 0 &&
+    rect.bottom >= 0 &&
+    rect.top <= window.innerHeight &&
+    rect.right >= 0 &&
+    rect.left <= window.innerWidth;
+  image.loading = optimizeImages && !isInViewport ? 'lazy' : 'eager';
+  image.decoding = optimizeImages ? 'async' : 'auto';
+});
+
 const bgm = document.getElementById('bgm');
 const muteBtn = document.getElementById('muteBtn');
 
