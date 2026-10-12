@@ -1,6 +1,6 @@
 const SITE_THEME_CREDITS = {
-  purple: 'Background art: @yorunogumo',
-  winter: '',
+  purple: '',
+  winter: 'Background art: @yorunogumo',
   bubblegum: '',
   autumn: ''
 };
