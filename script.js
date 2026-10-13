@@ -71,15 +71,10 @@ function addSiteSettings() {
   snowCheckbox.checked = savedSnow !== 'false';
   imageOptimizationCheckbox.checked = savedImageOptimization !== 'false';
   let imageOptimizationEnabled = imageOptimizationCheckbox.checked;
+  document.documentElement.dataset.imageOptimization = String(imageOptimizationEnabled);
 
   function configureImageLoading(image) {
-    const rect = image.getBoundingClientRect();
-    const isInViewport = image.getClientRects().length > 0 &&
-      rect.bottom >= 0 &&
-      rect.top <= window.innerHeight &&
-      rect.right >= 0 &&
-      rect.left <= window.innerWidth;
-    image.loading = imageOptimizationEnabled && !isInViewport ? 'lazy' : 'eager';
+    image.loading = imageOptimizationEnabled ? 'lazy' : 'eager';
     image.decoding = imageOptimizationEnabled ? 'async' : 'auto';
   }
 
@@ -124,6 +119,7 @@ function addSiteSettings() {
 
   imageOptimizationCheckbox.addEventListener('change', () => {
     imageOptimizationEnabled = imageOptimizationCheckbox.checked;
+    document.documentElement.dataset.imageOptimization = String(imageOptimizationEnabled);
     configureImages(document);
     localStorage.setItem(SITE_SETTINGS_KEYS.imageOptimization, String(imageOptimizationCheckbox.checked));
   });
@@ -149,6 +145,22 @@ function addSiteSettings() {
 document.addEventListener('DOMContentLoaded', () => {
   addSiteSettings();
 
+  document.querySelectorAll('.copy-discord-tag').forEach(button => {
+    button.addEventListener('click', async () => {
+      if (!navigator.clipboard?.writeText) {
+        window.alert('Clipboard access is unavailable in this browser.');
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText('marcelbossasg');
+        window.alert('Discord tag copied: marcelbossasg');
+      } catch {
+        window.alert('Could not copy the Discord tag. Please copy it manually: marcelbossasg');
+      }
+    });
+  });
+
   const mainContent = document.querySelector('.main-content');
   if (mainContent) {
     const watermark = document.createElement('small');
@@ -157,14 +169,163 @@ document.addEventListener('DOMContentLoaded', () => {
     mainContent.appendChild(watermark);
   }
 
+  const aboutPage = document.querySelector('.about-page');
+  if (aboutPage) {
+    const floatingLayer = aboutPage.querySelector('.about-floating-text');
+    const floatingQuotes = [
+      // Add entries here. Use \n for a line break and leave author empty for plain text.
+      {
+        text: 'If you notice this send me a DM',
+        author: '@MarcelBossASG'
+      }
+    ];
+    const floatingItems = [];
+
+    for (let i = floatingQuotes.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [floatingQuotes[i], floatingQuotes[j]] = [floatingQuotes[j], floatingQuotes[i]];
+    }
+
+    const selectedQuotes = floatingQuotes.slice(0, 10);
+    selectedQuotes.forEach(quote => {
+      const element = document.createElement('div');
+      element.className = 'about-floating-quote';
+      quote.text.split('\n').forEach((line, lineIndex) => {
+        if (lineIndex > 0) element.appendChild(document.createElement('br'));
+        element.appendChild(document.createTextNode(line));
+      });
+      if (quote.author) {
+        const author = document.createElement('span');
+        author.className = 'about-floating-author';
+        author.textContent = `— ${quote.author}`;
+        element.appendChild(author);
+      }
+      floatingLayer.appendChild(element);
+      floatingItems.push({
+        element,
+        x: 0,
+        y: 0,
+        vx: (Math.random() < 0.5 ? -1 : 1) * (7 + Math.random() * 7),
+        vy: (Math.random() < 0.5 ? -1 : 1) * (5 + Math.random() * 6),
+        width: 0,
+        height: 0
+      });
+    });
+
+    let hasInitialPositions = false;
+    function positionFloatingItems() {
+      const width = floatingLayer.clientWidth;
+      const height = floatingLayer.clientHeight;
+
+      floatingItems.forEach(item => {
+        item.width = item.element.offsetWidth;
+        item.height = item.element.offsetHeight;
+        const maxX = Math.max(0, width - item.width);
+        const maxY = Math.max(0, height - item.height);
+        if (hasInitialPositions) {
+          item.x = Math.min(item.x, maxX);
+          item.y = Math.min(item.y, maxY);
+        } else {
+          const edge = Math.floor(Math.random() * 4);
+          item.x = edge === 1
+            ? maxX
+            : edge === 3
+              ? 0
+              : Math.random() * maxX;
+          item.y = edge === 0
+            ? 0
+            : edge === 2
+              ? maxY
+              : Math.random() * maxY;
+        }
+        item.element.style.transform = `translate(${item.x}px, ${item.y}px)`;
+      });
+      hasInitialPositions = true;
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let animationFrame = 0;
+    let previousFrame = 0;
+
+    function shouldPauseFloatingAnimation() {
+      return document.hidden || reducedMotion.matches;
+    }
+
+    function advanceFloatingAxis(position, velocity, maximum, delta) {
+      if (maximum <= 0) return [0, 0];
+
+      position += velocity * delta;
+      while (position < 0 || position > maximum) {
+        if (position < 0) {
+          position = -position;
+          velocity = Math.abs(velocity);
+        } else {
+          position = 2 * maximum - position;
+          velocity = -Math.abs(velocity);
+        }
+      }
+
+      return [position, velocity];
+    }
+
+    function animateFloatingItems(timestamp) {
+      animationFrame = 0;
+      if (shouldPauseFloatingAnimation()) return;
+
+      const delta = previousFrame
+        ? (timestamp - previousFrame) / 1000
+        : 0;
+      previousFrame = timestamp;
+
+      const width = floatingLayer.clientWidth;
+      const height = floatingLayer.clientHeight;
+      floatingItems.forEach(item => {
+        const maxX = Math.max(0, width - item.width);
+        const maxY = Math.max(0, height - item.height);
+        [item.x, item.vx] = advanceFloatingAxis(item.x, item.vx, maxX, delta);
+        [item.y, item.vy] = advanceFloatingAxis(item.y, item.vy, maxY, delta);
+
+        item.element.style.transform = `translate(${item.x}px, ${item.y}px)`;
+      });
+
+      animationFrame = window.requestAnimationFrame(animateFloatingItems);
+    }
+
+    function startFloatingAnimation() {
+      if (!shouldPauseFloatingAnimation() && !animationFrame) {
+        previousFrame = 0;
+        animationFrame = window.requestAnimationFrame(animateFloatingItems);
+      }
+    }
+
+    function updateFloatingAnimation() {
+      positionFloatingItems();
+      if (shouldPauseFloatingAnimation()) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        previousFrame = 0;
+      } else {
+        startFloatingAnimation();
+      }
+    }
+
+    positionFloatingItems();
+    startFloatingAnimation();
+    window.addEventListener('resize', updateFloatingAnimation);
+    document.addEventListener('visibilitychange', updateFloatingAnimation);
+    reducedMotion.addEventListener('change', updateFloatingAnimation);
+  }
+
   const hamburger = document.querySelector('.hamburger-menu');
   const mobileNav = document.querySelector('.mobile-nav');
   const backdrop = document.querySelector('.mobile-nav-backdrop');
+  const topbar = document.querySelector('.topbar');
 
   function closeMenu() {
     hamburger.classList.remove('open');
     mobileNav.classList.remove('open');
     backdrop.classList.remove('open');
+    topbar.classList.remove('menu-open');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
   }
@@ -173,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.classList.add('open');
     mobileNav.classList.add('open');
     backdrop.classList.add('open');
+    topbar.classList.add('menu-open');
     hamburger.setAttribute('aria-expanded', 'true');
     mobileNav.setAttribute('aria-hidden', 'false');
   }
@@ -192,26 +354,27 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.main-content')?.classList.add('loaded');
   });
 
-const textElements = Array.from(document.querySelectorAll('.main-content p'));
-const projectBoxes = document.querySelectorAll('.project-box');
-const irlItems = document.querySelectorAll('.irl-item');
+  const textElements = Array.from(document.querySelectorAll('.main-content p'))
+    .filter(el => !el.closest('.project-box'));
+  const projectBoxes = document.querySelectorAll('.project-box');
+  const irlItems = document.querySelectorAll('.irl-item');
 
-const TEXT_STAGGER = 0.2;
-const PROJECT_STAGGER = 0.65;
-const IRL_STAGGER = 0.3;
+  const TEXT_STAGGER = 0.2;
+  const PROJECT_STAGGER = 0.65;
+  const IRL_STAGGER = 0.3;
 
-function applyStagger(elements, stagger) {
-  elements.forEach((el, i) => {
-    el.classList.add('pop-in');
-    el.style.setProperty('--delay', `${i * stagger}s`);
-  });
-}
+  function applyStagger(elements, stagger) {
+    elements.forEach((el, i) => {
+      el.classList.add('pop-in');
+      el.style.setProperty('--delay', `${i * stagger}s`);
+    });
+  }
 
-setTimeout(() => {
-  applyStagger(textElements, TEXT_STAGGER);
-  applyStagger(projectBoxes, PROJECT_STAGGER);
-  applyStagger(irlItems, IRL_STAGGER);
-}, 50);
+  setTimeout(() => {
+    applyStagger(textElements, TEXT_STAGGER);
+    applyStagger(projectBoxes, PROJECT_STAGGER);
+    applyStagger(irlItems, IRL_STAGGER);
+  }, 50);
 
   const canvas = document.createElement('canvas');
   canvas.classList.add('snow-canvas');
@@ -226,18 +389,22 @@ setTimeout(() => {
   let snowEnabled = localStorage.getItem(SITE_SETTINGS_KEYS.snow) !== 'false';
   let snowAnimationRunning = false;
 
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function setSnowEnabled(enabled) {
     snowEnabled = enabled;
-    canvas.style.display = enabled && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const shouldAnimate = enabled && !reducedMotion.matches;
+    canvas.style.display = shouldAnimate
       ? 'block'
       : 'none';
-    if (enabled && !snowAnimationRunning) {
+    if (shouldAnimate && !snowAnimationRunning) {
       snowAnimationRunning = true;
       requestAnimationFrame(animateSnow);
     }
   }
 
   setSnowEnabled(snowEnabled);
+  reducedMotion.addEventListener('change', () => setSnowEnabled(snowEnabled));
   window.addEventListener('site-snow-change', event => {
     setSnowEnabled(event.detail);
   });
@@ -281,11 +448,11 @@ setTimeout(() => {
 
   let lastFrame = 0;
   function animateSnow(timestamp) {
-    if (!snowEnabled) {
+    if (!snowEnabled || reducedMotion.matches) {
       snowAnimationRunning = false;
       return;
     }
-    if (timestamp - lastFrame > 33) { 
+    if (timestamp - lastFrame > 33) {
       drawSnowflakes();
       updateSnowflakes();
       lastFrame = timestamp;
@@ -298,7 +465,7 @@ setTimeout(() => {
     const overlay = document.createElement('div');
     overlay.className = 'irl-overlay';
     overlay.innerHTML = `
-      <button class="irl-overlay-close" aria-label="Close">✕</button>
+      <button class="irl-overlay-close" type="button" aria-label="Close">✕</button>
       <div class="irl-overlay-inner" role="dialog" aria-modal="true"></div>
       <div class="irl-overlay-bottom" aria-hidden="true"></div>
     `;
@@ -366,21 +533,60 @@ setTimeout(() => {
       if (event.target === imageLightbox) closeImageLightbox();
     });
 
-    function loadOverlayMedia(container) {
-    // IMAGES
-    container.querySelectorAll("img[data-src]").forEach(img => {
-      img.src = img.dataset.src;
-      img.removeAttribute("data-src");
-    });
+    let overlayMediaObserver = null;
+    let openingTransitionHandler = null;
+    let overlayTrigger = null;
 
-    // IFRAMES (YouTube etc.)
-    container.querySelectorAll("iframe[data-src]").forEach(frame => {
-      frame.src = frame.dataset.src;
-      frame.removeAttribute("data-src");
-    });
-  }
+    function loadOverlayMedia(container) {
+      overlayMediaObserver?.disconnect();
+
+      const mediaElements = container.querySelectorAll('img[data-src], iframe[data-src]');
+      const loadMedia = media => {
+        const source = media.dataset.src;
+        if (!source) return;
+        if (media instanceof HTMLImageElement) {
+          media.loading = document.documentElement.dataset.imageOptimization === 'false'
+            ? 'eager'
+            : 'lazy';
+          media.decoding = document.documentElement.dataset.imageOptimization === 'false'
+            ? 'auto'
+            : 'async';
+        }
+        media.src = source;
+        media.removeAttribute('data-src');
+      };
+
+      if (document.documentElement.dataset.imageOptimization === 'false') {
+        mediaElements.forEach(loadMedia);
+        return;
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        mediaElements.forEach(loadMedia);
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          const media = entry.target;
+          loadMedia(media);
+          observer.unobserve(media);
+        });
+      }, {
+        root: container,
+        rootMargin: '300px 0px'
+      });
+      overlayMediaObserver = observer;
+
+      mediaElements.forEach(media => {
+        overlayMediaObserver.observe(media);
+      });
+    }
 
     function openOverlayFromButton(btn, panel) {
+      overlayTrigger = btn;
       const rect = btn.getBoundingClientRect();
       // use viewport coordinates (no scroll offsets) because overlay is fixed
       const start = { left: rect.left, top: rect.top, width: rect.width, height: rect.height, radius: window.getComputedStyle(btn).borderRadius || '8px' };
@@ -389,11 +595,6 @@ setTimeout(() => {
       document.body.style.overflow = 'hidden';
       // copy panel content into overlay
       overlayInner.innerHTML = panel.innerHTML;
-      overlayInner.querySelectorAll("iframe[data-src]").forEach(frame => {
-        if (!frame.src) {
-          frame.src = frame.dataset.src;
-        }
-      });
       overlayInner.style.visibility = 'hidden';
       // set initial geometry (viewport coordinates)
       overlay.style.position = 'fixed';
@@ -402,14 +603,12 @@ setTimeout(() => {
       overlay.style.width = start.width + 'px';
       overlay.style.height = start.height + 'px';
       overlay.style.borderRadius = start.radius;
+      overlay.style.transform = 'none';
+      overlay.classList.remove('closing');
       overlay._start = start;
       // show overlay element (kept overflow:hidden via CSS)
       overlay.style.display = 'block';
       overlay.classList.add('open');
-
-      requestAnimationFrame(() => {
-        loadOverlayMedia(overlayInner);
-      });
 
       // ensure inner pane doesn't scroll during the expand animation
       overlayInner.style.overflow = 'hidden';
@@ -417,7 +616,6 @@ setTimeout(() => {
       // target geometry (10px gap from viewport edges), anchored top-left
       const topbarRect = document.querySelector('.topbar')?.getBoundingClientRect();
       const targetTop = topbarRect ? Math.round(topbarRect.bottom) : 0; // flush under topbar
-      const targetWidth = Math.max(200, document.documentElement.clientWidth);
       // cover down to the bottom of the viewport (will overlap the bottombar)
       const targetHeight = Math.max(200, window.innerHeight - targetTop);
 
@@ -426,6 +624,7 @@ setTimeout(() => {
         if (e.propertyName !== 'height') return; // 🔥 critical fix
 
         overlay.removeEventListener('transitionend', onOpenEnd);
+        openingTransitionHandler = null;
 
         overlayInner.style.overflow = 'auto';
 
@@ -455,23 +654,28 @@ setTimeout(() => {
         overlayInner.style.visibility = 'visible';
 
         overlayInner.classList.add('visible');
+        loadOverlayMedia(overlayInner);
 
-        // apply pop-in to all child elements inside overlay
-        const groups = overlayInner.querySelectorAll(':scope > *');
+        // Stagger the actual blog post content instead of animating its wrapper as one item.
+        const blogContent = overlayInner.querySelector('.blog-post-content');
+        const groups = blogContent
+          ? Array.from(blogContent.children)
+          : Array.from(overlayInner.children);
 
         groups.forEach((group, i) => {
           group.classList.add('pop-in');
           group.style.setProperty('--delay', `${i * 0.2}s`);
 
           // animate images inside gallery slightly after group
-          const inner = group.querySelectorAll?.('.irl-gallery > *');
-          inner?.forEach((el, j) => {
+          const inner = group.querySelectorAll('.irl-gallery > *');
+          inner.forEach((el, j) => {
             el.classList.add('pop-in');
             el.style.setProperty('--delay', `${i * 0.2 + j * 0.08}s`);
           });
         });
       }
       
+      openingTransitionHandler = onOpenEnd;
       overlay.addEventListener('transitionend', onOpenEnd);
 
       // use native scrolling and prevent scroll chaining using CSS 'overscroll-behavior'
@@ -489,39 +693,52 @@ setTimeout(() => {
     }
 
     function closeOverlay() {
-      // animate inner content out
-        overlayInner.classList.remove('visible');
-        // prevent inner scrolling during collapse to avoid flicker
-        overlayInner.style.overflow = 'hidden';
-      // animate back to the starting button rect if available
-      const start = overlay._start;
-      if (start) {
-        overlay.style.right = 'auto';
-        overlay.style.left = start.left + 'px';
-        overlay.style.top = start.top + 'px';
-        overlay.style.width = start.width + 'px';
-        overlay.style.height = start.height + 'px';
-        overlay.style.borderRadius = start.radius || '8px';
-      } else {
-        // fallback: collapse to small top-left box
-        const gap = 10;
-        overlay.style.right = 'auto';
-        overlay.style.left = (gap + window.scrollX) + 'px';
-        overlay.style.top = (gap + window.scrollY) + 'px';
-        overlay.style.width = '200px';
-        overlay.style.height = '48px';
-        overlay.style.borderRadius = '8px';
+      if (overlay.classList.contains('closing')) return;
+      overlayMediaObserver?.disconnect();
+      overlayMediaObserver = null;
+      if (openingTransitionHandler) {
+        overlay.removeEventListener('transitionend', openingTransitionHandler);
+        openingTransitionHandler = null;
       }
-      // after transition end, hide
-      const onEnd = () => {
+      // animate inner content out
+      overlayInner.classList.remove('visible');
+      overlayInner.style.overflow = 'hidden';
+
+      const current = overlay.getBoundingClientRect();
+      const start = overlay._start || {
+        left: 10,
+        top: 10,
+        width: 200,
+        height: 48,
+        radius: '8px'
+      };
+      overlay.style.right = 'auto';
+      overlay.style.left = current.left + 'px';
+      overlay.style.top = current.top + 'px';
+      overlay.style.width = current.width + 'px';
+      overlay.style.height = current.height + 'px';
+      overlay.style.borderRadius = start.radius || '8px';
+      overlay.classList.add('closing');
+
+      requestAnimationFrame(() => {
+        overlay.style.transform =
+          `translate(${start.left - current.left}px, ${start.top - current.top}px) ` +
+          `scale(${start.width / current.width}, ${start.height / current.height})`;
+      });
+
+      const onEnd = event => {
+        if (event.target !== overlay || event.propertyName !== 'transform') return;
         overlay.removeEventListener('transitionend', onEnd);
         overlay.style.display = 'none';
         overlay.classList.remove('open');
+        overlay.classList.remove('closing');
+        overlay.style.transform = 'none';
         overlayInner.innerHTML = '';
         overlayInner.style.height = '';
         // restore body scroll
         document.body.style.overflow = overlay._prevBodyOverflow || '';
-        if (window.placeWatermark) window.placeWatermark();
+        overlayTrigger?.focus();
+        overlayTrigger = null;
       };
       overlay.addEventListener('transitionend', onEnd);
     }
@@ -554,6 +771,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let activeElement = null;
   let lastPointer = null;
+  let tooltipRefreshScheduled = false;
 
   function hideTooltip() {
     activeElement = null;
@@ -612,7 +830,13 @@ window.addEventListener("DOMContentLoaded", () => {
       hideTooltip();
       return;
     }
-    window.setTimeout(refreshTooltip, 0);
+    if (tooltipRefreshScheduled) return;
+
+    tooltipRefreshScheduled = true;
+    window.requestAnimationFrame(() => {
+      tooltipRefreshScheduled = false;
+      refreshTooltip();
+    });
   }
 
   document.addEventListener("pointerover", event => {
