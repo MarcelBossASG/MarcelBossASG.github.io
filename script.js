@@ -7,8 +7,7 @@ const SITE_THEME_CREDITS = {
 const SITE_SETTINGS_KEYS = {
   theme: 'site-theme',
   snow: 'site-snow',
-  language: 'site-language',
-  imageOptimization: 'site-image-quality'
+  language: 'site-language'
 };
 
 function addSiteSettings() {
@@ -32,11 +31,6 @@ function addSiteSettings() {
         <input name="snow" type="checkbox">
         Snow
       </label>
-      <label class="site-settings-checkbox">
-        <input name="imageOptimization" type="checkbox">
-        Optimize image loading
-      </label>
-      <small class="site-settings-note">Loads images as needed and decodes them asynchronously. Image quality is unchanged.</small>
       <label>
         Language
         <select name="language">
@@ -51,13 +45,11 @@ function addSiteSettings() {
   const panel = settings.querySelector('.site-settings-panel');
   const themeSelect = settings.querySelector('[name="theme"]');
   const snowCheckbox = settings.querySelector('[name="snow"]');
-  const imageOptimizationCheckbox = settings.querySelector('[name="imageOptimization"]');
   const languageSelect = settings.querySelector('[name="language"]');
 
   const savedTheme = localStorage.getItem(SITE_SETTINGS_KEYS.theme);
   const savedSnow = localStorage.getItem(SITE_SETTINGS_KEYS.snow);
   const savedLanguage = localStorage.getItem(SITE_SETTINGS_KEYS.language);
-  const savedImageOptimization = localStorage.getItem(SITE_SETTINGS_KEYS.imageOptimization);
   const defaultTheme = window.SITE_DEFAULT_THEME;
   const availableThemes = Array.from(themeSelect.options, option => option.value);
   const defaultThemeOption = themeSelect.querySelector(`option[value="${defaultTheme}"]`);
@@ -69,13 +61,10 @@ function addSiteSettings() {
   themeSelect.value = theme;
   languageSelect.value = language;
   snowCheckbox.checked = savedSnow !== 'false';
-  imageOptimizationCheckbox.checked = savedImageOptimization !== 'false';
-  let imageOptimizationEnabled = imageOptimizationCheckbox.checked;
-  document.documentElement.dataset.imageOptimization = String(imageOptimizationEnabled);
 
   function configureImageLoading(image) {
-    image.loading = imageOptimizationEnabled ? 'lazy' : 'eager';
-    image.decoding = imageOptimizationEnabled ? 'async' : 'auto';
+    image.loading = 'lazy';
+    image.decoding = 'async';
   }
 
   function configureImages(root) {
@@ -115,13 +104,6 @@ function addSiteSettings() {
   snowCheckbox.addEventListener('change', () => {
     localStorage.setItem(SITE_SETTINGS_KEYS.snow, String(snowCheckbox.checked));
     window.dispatchEvent(new CustomEvent('site-snow-change', { detail: snowCheckbox.checked }));
-  });
-
-  imageOptimizationCheckbox.addEventListener('change', () => {
-    imageOptimizationEnabled = imageOptimizationCheckbox.checked;
-    document.documentElement.dataset.imageOptimization = String(imageOptimizationEnabled);
-    configureImages(document);
-    localStorage.setItem(SITE_SETTINGS_KEYS.imageOptimization, String(imageOptimizationCheckbox.checked));
   });
 
   languageSelect.addEventListener('change', () => {
@@ -545,21 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const source = media.dataset.src;
         if (!source) return;
         if (media instanceof HTMLImageElement) {
-          media.loading = document.documentElement.dataset.imageOptimization === 'false'
-            ? 'eager'
-            : 'lazy';
-          media.decoding = document.documentElement.dataset.imageOptimization === 'false'
-            ? 'auto'
-            : 'async';
+          media.loading = 'lazy';
+          media.decoding = 'async';
         }
         media.src = source;
         media.removeAttribute('data-src');
       };
-
-      if (document.documentElement.dataset.imageOptimization === 'false') {
-        mediaElements.forEach(loadMedia);
-        return;
-      }
 
       if (!('IntersectionObserver' in window)) {
         mediaElements.forEach(loadMedia);

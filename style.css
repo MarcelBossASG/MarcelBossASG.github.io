@@ -1088,13 +1088,6 @@ html, body {
   top: calc(100% - 1px);
 }
 
-.site-settings-note {
-  color: var(--color-text-muted);
-  font-size: 0.78rem;
-  line-height: 1.35;
-  margin-top: -9px;
-}
-
 .site-settings-panel h2 {
   margin: 0;
   color: var(--color-accent-light);
